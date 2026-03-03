@@ -115,3 +115,27 @@ if minetest.get_modpath("pipeworks") then
 		{"side", "pipeworks:autocrafter", "src"},
 	})
 end
+
+if minetest.get_modpath("claycrafter") then
+    hopper:add_container({
+        -- 1. Take finished Clay (dst) from the TOP
+        -- (Hopper is underneath the Claycrafter)
+        {"top", "claycrafter:claycrafter", "dst"},
+        {"top", "claycrafter:claycrafter_active", "dst"},
+
+        -- 2. Put Dirt (src) from the BOTTOM
+        -- (Hopper is above the Claycrafter)
+        {"bottom", "claycrafter:claycrafter", "src"},
+        {"bottom", "claycrafter:claycrafter_active", "src"},
+
+        -- 3. Put Water (fuel) from the SIDES
+        -- (Hopper is next to the Claycrafter)
+        {"side", "claycrafter:claycrafter", "fuel"},
+        {"side", "claycrafter:claycrafter_active", "fuel"},
+
+        -- 4. Take empty glasses from the SIDE
+        -- (Optional: second hopper to clear out used glasses)
+        {"top", "claycrafter:claycrafter", "vessels"},
+        {"top", "claycrafter:claycrafter_active", "vessels"},
+    })
+end

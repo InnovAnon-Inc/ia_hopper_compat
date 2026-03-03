@@ -116,13 +116,14 @@ if minetest.get_modpath("pipeworks") then
 	})
 end
 
+-- NOTE need to manually remove clay from dst
 if minetest.get_modpath("claycrafter") then
     hopper:add_container({
         -- 1. Take finished Clay (dst) from the TOP
         -- (Hopper is underneath the Claycrafter)
 	-- NOTE need to enhance the hopper mod to properly handle this
         --{"top", "claycrafter:claycrafter", "dst"},
-        {"top", "claycrafter:claycrafter_active", "dst"},
+        --{"top", "claycrafter:claycrafter_active", "dst"},
 
         -- 2. Put Dirt (src) from the BOTTOM
         -- (Hopper is above the Claycrafter)
@@ -131,13 +132,37 @@ if minetest.get_modpath("claycrafter") then
 
         -- 3. Put Water (fuel) from the SIDES
         -- (Hopper is next to the Claycrafter)
-        {"side", "claycrafter:claycrafter", "fuel"},
-        {"side", "claycrafter:claycrafter_active", "fuel"},
+        {"side",   "claycrafter:claycrafter", "fuel"},
+        {"side",   "claycrafter:claycrafter_active", "fuel"},
 
         -- 4. Take empty glasses from the SIDE
         -- (Optional: second hopper to clear out used glasses)
 	-- NOTE need to enhance the hopper mod to properly handle this
-        {"top", "claycrafter:claycrafter", "vessels"},
-        --{"top", "claycrafter:claycrafter_active", "vessels"},
+        {"top",   "claycrafter:claycrafter", "vessels"},
+        {"top",   "claycrafter:claycrafter_active", "vessels"},
+    })
+end
+
+-- NOTE need to manually remove full tanks from tanks
+if minetest.get_modpath("airtanks") then
+    hopper:add_container({
+	-- NOTE would need to filter
+        --{"top",    "airtanks:compressor", "tanks"},
+        {"bottom", "airtanks:compressor", "tanks"},
+        {"side",   "airtanks:compressor", "fuel"},
+    })
+end
+
+-- NOTE need to manually remove full combs from combs
+if minetest.get_modpath("bees") then
+    hopper:add_container({
+        --{"top",    "bees:hive_artificial", "queen"},
+        {"bottom", "bees:hive_artificial", "combs"},
+        {"side",   "bees:hive_artificial", "queen"},
+    })
+    hopper:add_container({
+        {"top",    "bees:extractor", "bottles_full"}, -- NOTE also need wax, frames_emptied
+        {"bottom", "bees:extractor", "frames_filled"},
+        {"side",   "bees:extractor", "bottles_empty"},
     })
 end

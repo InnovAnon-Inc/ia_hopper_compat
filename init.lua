@@ -120,7 +120,8 @@ if minetest.get_modpath("claycrafter") then
     hopper:add_container({
         -- 1. Take finished Clay (dst) from the TOP
         -- (Hopper is underneath the Claycrafter)
-        {"top", "claycrafter:claycrafter", "dst"},
+	-- NOTE need to enhance the hopper mod to properly handle this
+        --{"top", "claycrafter:claycrafter", "dst"},
         {"top", "claycrafter:claycrafter_active", "dst"},
 
         -- 2. Put Dirt (src) from the BOTTOM
@@ -135,7 +136,8 @@ if minetest.get_modpath("claycrafter") then
 
         -- 4. Take empty glasses from the SIDE
         -- (Optional: second hopper to clear out used glasses)
+	-- NOTE need to enhance the hopper mod to properly handle this
         {"top", "claycrafter:claycrafter", "vessels"},
-        {"top", "claycrafter:claycrafter_active", "vessels"},
+        --{"top", "claycrafter:claycrafter_active", "vessels"},
     })
 end

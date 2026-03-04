@@ -116,6 +116,30 @@ if minetest.get_modpath("pipeworks") then
 	})
 end
 
+-- NOTE need to manually remove full tanks from tanks
+if minetest.get_modpath("airtanks") then
+    hopper:add_container({
+	-- NOTE would need to filter
+        --{"top",    "airtanks:compressor", "tanks"},
+        {"bottom", "airtanks:compressor", "tanks"},
+        {"side",   "airtanks:compressor", "fuel"},
+    })
+end
+
+-- NOTE need to manually remove full combs from combs
+if minetest.get_modpath("bees") then
+    hopper:add_container({
+        --{"top",    "bees:hive_artificial", "queen"},
+        {"bottom", "bees:hive_artificial", "combs"},
+        {"side",   "bees:hive_artificial", "queen"},
+    })
+    hopper:add_container({
+        {"top",    "bees:extractor", "bottles_full"}, -- NOTE also need wax, frames_emptied
+        {"bottom", "bees:extractor", "frames_filled"},
+        {"side",   "bees:extractor", "bottles_empty"},
+    })
+end
+
 -- NOTE need to manually remove clay from dst
 if minetest.get_modpath("claycrafter") then
     hopper:add_container({
@@ -143,26 +167,10 @@ if minetest.get_modpath("claycrafter") then
     })
 end
 
--- NOTE need to manually remove full tanks from tanks
-if minetest.get_modpath("airtanks") then
+if minetest.get_modpath("fakery") then
     hopper:add_container({
-	-- NOTE would need to filter
-        --{"top",    "airtanks:compressor", "tanks"},
-        {"bottom", "airtanks:compressor", "tanks"},
-        {"side",   "airtanks:compressor", "fuel"},
-    })
-end
-
--- NOTE need to manually remove full combs from combs
-if minetest.get_modpath("bees") then
-    hopper:add_container({
-        --{"top",    "bees:hive_artificial", "queen"},
-        {"bottom", "bees:hive_artificial", "combs"},
-        {"side",   "bees:hive_artificial", "queen"},
-    })
-    hopper:add_container({
-        {"top",    "bees:extractor", "bottles_full"}, -- NOTE also need wax, frames_emptied
-        {"bottom", "bees:extractor", "frames_filled"},
-        {"side",   "bees:extractor", "bottles_empty"},
+        {"top",    "fakery:table", "dest"},
+	{"bottom", "fakery:table", "metal"},
+        {"side",   "fakery:table", "dye"},
     })
 end

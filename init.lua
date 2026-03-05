@@ -174,3 +174,11 @@ if minetest.get_modpath("fakery") then
         {"side",   "fakery:table", "dye"},
     })
 end
+
+if minetest.get_modpath("smartshop") then
+    hopper:add_container({
+        {"top",    "smartshop:storage", "main"},
+	{"bottom", "smartshop:storage", "main"},
+        {"side",   "smartshop:storage", "main"},
+    })
+end

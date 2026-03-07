@@ -105,6 +105,20 @@ if minetest.get_modpath("technic") then
 		{"bottom", "technic:injector", "main"},
 		{"side", "technic:injector", "main"}, 
 	})
+
+	hopper:add_container({
+		{"top",    "technic:mv_extractor", "dst"}, 
+		{"bottom", "technic:mv_extractor", "src"},
+		{"side",   "technic:mv_extractor", "src"}, 
+
+		{"top",    "technic:mv_grinder", "dst"}, 
+		{"bottom", "technic:mv_grinder", "src"},
+		{"side",   "technic:mv_grinder", "src"}, 
+
+		{"top",    "technic:mv_freezer", "dst"}, 
+		{"bottom", "technic:mv_freezer", "src"},
+		{"side",   "technic:mv_freezer", "src"}, 
+	})
 end
 
 -- Add support for pipeworks autocrafter.
@@ -167,6 +181,14 @@ if minetest.get_modpath("claycrafter") then
     })
 end
 
+if minetest.get_modpath("composting") then
+	hopper:add_container({
+		{"top",    "composting:composter", "main"}, 
+		{"bottom", "composting:composter", "main"},
+		{"side",   "composting:composter", "main"}, 
+	})
+end
+
 if minetest.get_modpath("fakery") then
     hopper:add_container({
         {"top",    "fakery:table", "dest"},
@@ -180,5 +202,17 @@ if minetest.get_modpath("smartshop") then
         {"top",    "smartshop:storage", "main"},
 	{"bottom", "smartshop:storage", "main"},
         {"side",   "smartshop:storage", "main"},
+    })
+end
+
+if minetest.get_modpath("waffles") then
+    hopper:add_container({
+        {"top",    "waffles:waffle_maker",      "main"},
+	{"bottom", "waffles:waffle_maker",      "main"},
+        {"side",   "waffles:waffle_maker",      "main"},
+
+        {"top",    "waffles:waffle_maker_open", "main"},
+	{"bottom", "waffles:waffle_maker_open", "main"},
+        {"side",   "waffles:waffle_maker_open", "main"},
     })
 end

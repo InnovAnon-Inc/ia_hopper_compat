@@ -197,6 +197,14 @@ if minetest.get_modpath("fakery") then
     })
 end
 
+if minetest.get_modpath("mcg_lockworkshop") then
+    hopper:add_container({
+        {"top",    "mcg_lockworkshop:lock_workshop", "output"},
+	{"bottom", "mcg_lockworkshop:lock_workshop", "input"},
+        {"side",   "mcg_lockworkshop:lock_workshop", "lock"},
+    })
+end
+
 if minetest.get_modpath("smartshop") then
     hopper:add_container({
         {"top",    "smartshop:storage", "main"},
